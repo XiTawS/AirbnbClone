@@ -12,8 +12,9 @@ body {
 
 /* Header Styles */
 .header {
-  background: white;
-  padding: 1rem 2rem;
+  padding: 20px;
+  color: white;
+  text-align: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -174,15 +175,6 @@ button i {
   margin: 1rem 0;
 }
 
-.booking-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  position: sticky;
-  top: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
 /* Checkout Page Styles */
 .checkout-container {
   max-width: 800px;
@@ -248,7 +240,7 @@ button i {
 }
 
 .search-bar.scrolled {
-  width: 400px;
+  width: 380px;
   padding: 0.3rem 1rem;
   top: 20px;
 }
@@ -573,4 +565,18 @@ button i {
 
 .carousel-button:hover {
   background: rgba(255, 255, 255, 0.9);
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
 }

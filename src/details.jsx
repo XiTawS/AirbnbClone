@@ -11,24 +11,27 @@ function Details() {
     }
 
     return (
-        <>
-        <header class="header">
-        <nav class="nav">
-            <div class="logo">AirbnbClone</div>
-            <div class="nav-links">
-                <a href="listings.html">Locations</a>
-            </div>
-        </nav>
-        </header>
-        <div className='listing-details'>
-            <img src={listing.image} alt={listing.title} className='listing-image'/>
-            <div className='listing-detail-info'>
-                <h1>{listing.title}</h1>
-                <p>{listing.description}</p>
-                <p className="price">{listing.price}</p>
+        <div className="details-container">
+            <header className="header">
+                <nav className="nav">
+                    <div className="logo">AirbnbClone</div>
+                    <div className="nav-links">
+                        <a href="listings.html">Locations</a>
+                    </div>
+                </nav>
+            </header>
+            <div className='listing-details'>
+                <button onClick={() => window.history.back()} className='back-button'>Retour</button>
+                <div className="listing-image-container">
+                    <img src={listing.image} alt={listing.title} className='listing-image'/>
+                </div>
+                <div className='listing-detail-info'>
+                    <h1 className="listing-title">{listing.title}</h1>
+                    <p className="listing-description">{listing.description}</p>
+                    <p className="price">{listing.price}</p>
+                </div>
             </div>
         </div>
-        </>
     )
 }
 

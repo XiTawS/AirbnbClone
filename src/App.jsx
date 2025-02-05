@@ -153,13 +153,6 @@ function App() {
     });
   };
 
-  const handleImageLoad = (index) => {
-    const imageElements = document.querySelectorAll('.listing-image');
-    if (imageElements[index]) {
-      imageElements[index].classList.add('loaded');
-    }
-  };
-
   const toggleLike = (listingId) => {
     setLikedListings(prev => 
       prev.includes(listingId) 
@@ -190,7 +183,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="app">
       <header className="header">
         <nav className="nav">
           <div className="logo">AirbnbClone</div>
@@ -319,7 +312,7 @@ function App() {
           </div>
         ))}
       </main>
-    </>
+    </div>
   );
 }
 
