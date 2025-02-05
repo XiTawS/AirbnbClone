@@ -1,0 +1,576 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+}
+
+/* Header Styles */
+.header {
+  background: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  color: #ff385c;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Listings Page Styles */
+.listings-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: block;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 140px;
+}
+
+.listing-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  display: flex;
+  margin: 1em 0;
+  position: relative;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+}
+
+.listing-image-container {
+  position: relative;
+  width: 350px;
+  height: 225px;
+}
+
+.listing-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px 0 0 12px;
+}
+
+.listing-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  overflow: hidden;
+}
+
+.listing-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.listing-description, .listing-rating, .listing-details, .listing-price {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.listing-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.listing-price {
+  color: #ff385c;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.listing-like {
+  background: transparent;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  color: #ddd;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.listing-like i {
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.listing-like:hover i {
+  animation: fillHeart 0.5s forwards;
+}
+
+@keyframes fillHeart {
+  0% {
+    color: #ddd;
+  }
+  100% {
+    color: #ff385c;
+  }
+}
+
+button i {
+  font-size: 50px;
+}
+
+/* Detail Page Styles */
+.detail-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.detail-images {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.main-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.detail-info {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.amenities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.booking-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  position: sticky;
+  top: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Checkout Page Styles */
+.checkout-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.checkout-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Button Styles */
+.btn {
+  background: #ff385c;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #e31c5f;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  position: fixed;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 0.5rem 1rem;
+}
+
+.search-bar.scrolled {
+  width: 400px;
+  padding: 0.3rem 1rem;
+  top: 20px;
+}
+
+.search-bar.scrolled .search-info,
+.search-bar.scrolled .search-button {
+  display: none;
+}
+
+.search-bar.scrolled .search-location {
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  padding: 0.8rem;
+}
+
+.search-section {
+  flex: 1;
+  margin: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-section label {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+.search-section input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-section input[type="text"],
+.search-section .react-datepicker-wrapper,
+.search-section input[type="number"] {
+  font-size: 0.9rem;
+}
+
+.search-button {
+  background: #ff385c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.search-button:hover {
+  background: #e31c5f;
+}
+
+.search-info {
+  display: flex;
+}
+
+/* Calendar Styles */
+.calendar {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.react-datepicker {
+  border: 1px solid #ff385c;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background-color: #fff;
+}
+
+.react-datepicker__header {
+  background-color: #ff385c;
+  color: white;
+  border-bottom: 1px solid #ff385c;
+  border-radius: 12px 12px 0 0;
+  padding: 0.5rem;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #ff385c;
+  color: white;
+  border-radius: 50%;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e31c5f;
+  color: white;
+  border-radius: 50%;
+}
+
+.react-datepicker__current-month {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.react-datepicker__day-name {
+  color: #555;
+  font-weight: bold;
+}
+
+.search-location {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-date {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-voyageurs {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.traveler-popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  z-index: 10;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+  width: 200px;
+}
+
+.search-voyageurs:focus + .traveler-popup,
+.traveler-popup:hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.traveler-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.traveler-controls button {
+  background: #ff385c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.traveler-controls button:hover {
+  background: #e31c5f;
+}
+
+.traveler-controls span {
+  margin: 0 1rem;
+  font-size: 1rem;
+}
+
+.traveler-popup label {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.traveler-popup label i {
+  margin-right: 0.5rem;
+  color: #ff385c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 90%;
+    top: 10px;
+  }
+  
+  .search-bar.scrolled {
+    width: 200px;
+  }
+  
+  .listings-container {
+    margin-top: 120px;
+  }
+
+  .search-section {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .search-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .listings-container {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-card {
+    flex-direction: column;
+  }
+
+  .listing-info {
+    padding: 1rem;
+  }
+
+  .traveler-popup {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .search-bar {
+    flex-direction: row;
+  }
+
+  .listings-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+.btn-validate {
+  background: #ff385c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-validate:hover {
+  background: #e31c5f;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: #ff385c;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+.carousel-button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
