@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "title": "Appartement moderne à Paris",
+        "location": "Paris",
+        "description": "Un appartement moderne à Paris",
+        "rating": "5",
+        "reviews": "1400",
+        "beds": "2",
+        "wifi": "yes",
+        "price": "120€ / nuit",
+        "images": [
+            "https://picsum.photos/600/400?random=1",
+            "https://picsum.photos/600/400?random=2",
+            "https://picsum.photos/600/400?random=3"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Villa avec piscine à Nice",
+        "location": "Nice",
+        "description": "Une villa avec piscine à Nice",
+        "rating": "4.5",
+        "reviews": "170",
+        "beds": "2",
+        "wifi": "yes",
+        "price": "250€ / nuit",
+        "images": [
+            "https://picsum.photos/600/400?random=4",
+            "https://picsum.photos/600/400?random=5",
+            "https://picsum.photos/600/400?random=6"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Chalet en montagne",
+        "location": "Chamonix",
+        "description": "Un chalet en montagne",
+        "rating": "3.5",
+        "reviews": "178",
+        "beds": "2",
+        "wifi": "no",
+        "price": "180€ / nuit",
+        "images": [
+            "https://picsum.photos/600/400?random=7",
+            "https://picsum.photos/600/400?random=8",
+            "https://picsum.photos/600/400?random=9"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Chalet en mer",
+        "location": "Oslo",
+        "description": "Un chalet en montagne",
+        "rating": "3.5",
+        "reviews": "178",
+        "beds": "2",
+        "wifi": "no",
+        "price": "180€ / nuit",
+        "images": [
+            "https://picsum.photos/600/400?random=10",
+            "https://picsum.photos/600/400?random=11",
+            "https://picsum.photos/600/400?random=12"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Chalet à la plage",
+        "location": "Dune du Pilat",
+        "description": "Un chalet en montagne",
+        "rating": "3.5",
+        "reviews": "178",
+        "beds": "2",
+        "wifi": "no",
+        "price": "180€ / nuit",
+        "images": [
+            "https://picsum.photos/600/400?random=13",
+            "https://picsum.photos/600/400?random=14",
+            "https://picsum.photos/600/400?random=15"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Chalet à Lyon",
+        "location": "Lyon",
+        "description": "Un chalet à Lyon",
+        "rating": "3.5",
+        "reviews": "178",
+        "beds": "2",
+        "wifi": "no",
+        "price": "180€ / nuit",
+        "images": [
+            "https://picsum.photos/600/400?random=16",
+            "https://picsum.photos/600/400?random=17",
+            "https://picsum.photos/600/400?random=18"
+        ]
+    }
+]

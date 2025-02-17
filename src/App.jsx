@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import listingsData from './listing.json';
 
 function App() {
   const navigate = useNavigate()
@@ -15,105 +16,17 @@ function App() {
   const [imageIndices, setImageIndices] = useState([0, 0, 0]);
   const [likedListings, setLikedListings] = useState([]);
   const [scrolled, setScrolled] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [listings, setListings] = useState([]);
 
-  const listings = [
-    {
-      id: 1,
-      title: "Appartement moderne à Paris",
-      location: "Paris",
-      description: "Un appartement moderne à Paris",
-      rating: "5",
-      reviews: "1400",
-      beds: "2",
-      wifi: "yes",
-      price: "120€ / nuit",
-      images: [
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688"
-      ],
-    },
-    {
-      id: 2,
-      title: "Villa avec piscine à Nice",
-      location: "Nice",
-      description: "Une villa avec piscine à Nice",
-      rating: "4.5",
-      reviews: "170",
-      beds: "2",
-      wifi: "yes",
-      price: "250€ / nuit",
-      images: [
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
-      ],
-    },
-    {
-      id: 3,
-      title: "Chalet en montagne",
-      location: "Chamonix",
-      description: "Un chalet en montagne",
-      rating: "3.5",
-      reviews: "178",
-      beds: "2",
-      wifi: "no",
-      price: "180€ / nuit",
-      images: [
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e"
-      ],
-    },
-    {
-      id: 4,
-      title: "Chalet en montagne",
-      location: "Chamonix",
-      description: "Un chalet en montagne",
-      rating: "3.5",
-      reviews: "178",
-      beds: "2",
-      wifi: "no",
-      price: "180€ / nuit",
-      images: [
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e"
-      ],
-    },
-    {
-      id: 5,
-      title: "Chalet en montagne",
-      location: "Chamonix",
-      description: "Un chalet en montagne",
-      rating: "3.5",
-      reviews: "178",
-      beds: "2",
-      wifi: "no",
-      price: "180€ / nuit",
-      images: [
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e"
-      ],
-    },
-    {
-      id: 6,
-      title: "Chalet en montagne",
-      location: "Chamonix",
-      description: "Un chalet en montagne",
-      rating: "3.5",
-      reviews: "178",
-      beds: "2",
-      wifi: "no",
-      price: "180€ / nuit",
-      images: [
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e",
-        "https://images.unsplash.com/photo-1501876725168-00c445821c9e"
-      ],
-    },
-  ];
+  useEffect(() => {
+    setListings(listingsData);
+  }, []);
+
+  const filteredListings = listings.filter(listing =>
+    listing.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    listing.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleViewDetails = (listing) => {
     navigate('/details', {state: {listing}})
@@ -264,53 +177,67 @@ function App() {
         </div>
         <div className="search-section">
           <label>Lieu</label>
-          <input className="search-location" type="text" placeholder="Où allez-vous ?" />
+          <input 
+            className="search-location" 
+            type="text" 
+            placeholder="Où allez-vous ?" 
+            value={searchTerm} 
+            onChange={(e) => setSearchTerm(e.target.value)} 
+          />
         </div>
         <button className="search-button">Rechercher</button>
       </div>
       <main className="listings-container">
-        {listings.map((listing, index) => (
-          <div key={listing.id} className="listing-card">
-            <div className="listing-image-container">
-              <img 
-                src={listing.images[imageIndices[index]]} 
-                alt={listing.title} 
-                className="listing-image" 
-              />
-              <div className="carousel-indicators">
-                {listing.images.map((_, imgIndex) => (
-                  <span 
-                    key={imgIndex} 
-                    className={`indicator ${imageIndices[index] === imgIndex ? 'active' : ''}`}
-                  ></span>
-                ))}
+        <div>
+          {filteredListings.map((listing, index) => (
+            <div key={listing.id} className="listing-card">
+              <div className="listing-image-container">
+                <img 
+                  src={listing.images[imageIndices[index]]} 
+                  alt={listing.title} 
+                  className="listing-image" 
+                />
+                <div className="carousel-indicators">
+                  {listing.images.map((_, imgIndex) => (
+                    <span 
+                      key={imgIndex} 
+                      className={`indicator ${imageIndices[index] === imgIndex ? 'active' : ''}`}
+                    ></span>
+                  ))}
+                </div>
+                <button onClick={() => handlePrevImage(index)} className="carousel-button prev">&#10094;</button>
+                <button onClick={() => handleNextImage(index)} className="carousel-button next">&#10095;</button>
               </div>
-              <button onClick={() => handlePrevImage(index)} className="carousel-button prev">&#10094;</button>
-              <button onClick={() => handleNextImage(index)} className="carousel-button next">&#10095;</button>
-            </div>
-            <div className="listing-info">
-              <h2 className="listing-title">{listing.title}</h2>
-              <div className="listing-like">
+              <div className="listing-info">
+                <h2 className="listing-title">{listing.title}</h2>
+                <div className="listing-like">
+                  <button 
+                    onClick={() => toggleLike(listing.id)}
+                    style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+                  >
+                    <i className={`fa-heart ${likedListings.includes(listing.id) ? 'fa-solid' : 'fa-regular'}`}></i>
+                  </button>
+                </div>
+                <p className="listing-description">{listing.description}</p>
+                <p className="listing-rating"> {renderStars(listing.rating, listing.reviews)}</p>
+                <p className="listing-details"><i className="fa-solid fa-location-dot"></i>{listing.location} <i className="fa-solid fa-bed"></i>{listing.beds} {listing.wifi === "yes" && <><i className="fa-solid fa-wifi"></i> Wi-Fi</>}</p>
+                <p className="listing-price">{listing.price}</p>
                 <button 
-                  onClick={() => toggleLike(listing.id)}
-                  style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+                  onClick={() => handleViewDetails(listing)} 
+                  className="btn"
                 >
-                  <i className={`fa-heart ${likedListings.includes(listing.id) ? 'fa-solid' : 'fa-regular'}`}></i>
+                  Voir les détails
                 </button>
               </div>
-              <p className="listing-description">{listing.description}</p>
-              <p className="listing-rating"> {renderStars(listing.rating, listing.reviews)}</p>
-              <p className="listing-details"><i className="fa-solid fa-location-dot"></i>{listing.location} <i className="fa-solid fa-bed"></i>{listing.beds} {listing.wifi === "yes" && <><i className="fa-solid fa-wifi"></i> Wi-Fi</>}</p>
-              <p className="listing-price">{listing.price}</p>
-              <button 
-                onClick={() => handleViewDetails(listing)} 
-                className="btn"
-              >
-                Voir les détails
-              </button>
             </div>
+          ))}
+        </div>
+
+        {filteredListings.length === 0 && (
+          <div>
+            Votre recherche n'aboutie à aucun résultat 
           </div>
-        ))}
+        )}
       </main>
     </div>
   );
